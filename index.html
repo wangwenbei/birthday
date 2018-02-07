@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./animate.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .wrap div{
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .wrap div.active {
+            opacity: 1;
+        }
+        .page1 {
+            height: 100%;
+            background: url(./image/1.png) center no-repeat;
+            background-size: 100% 100%;
+            _display: none;
+        }
+        .no-active.page1 {
+            animation: bounceOutLeft 1s linear forwards;
+
+        }
+        .active.page1 {
+            animation: bounceInDown 1s  linear forwards;
+        }
+
+        .page2 {
+            height: 100%;
+            background: url(./image/2.jpg) center no-repeat;
+            background-size: 100% 100%;
+        }
+        .no-active.page2 {
+            animation: bounceOutUp 1s linear forwards;
+
+        }
+        .active.page2 {
+            animation: bounceInRight 1s  linear forwards;
+        }
+        .page3, .page8 {
+            position: relative;
+            height: 100%;
+            background: url(./image/3.jpg) center no-repeat;
+            background-size: 100% 100%;
+            _display: none;
+        }
+
+        .no-active.page3 {
+            animation: bounceOutRight 1s linear forwards;
+
+        }
+        .active.page3 {
+            animation: bounceInUp 1s  linear forwards;
+        }
+        .page3 img, .page5 img {
+            width: 300px;
+            position: absolute;
+            border-radius: 10px;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .page4 img, .page6 img, .page8 img {
+            float: left;
+            width: 30%;
+            margin: 0px 20px 0 30px;
+            border-radius: 10px;
+            /*position: absolute;
+            width: 30%;
+            left: 30px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);*/
+        }
+        .page8 img {
+            width: 200px;
+        }
+        .page4 span, .page6 span, .page8 span {
+            /*position: absolute;
+            left: calc(30% + 60px);
+            width: calc(100% - 45%);
+            top: 50px;
+            color: lightcoral;
+            font-size: 25px;
+            font-weight: bold;*/
+            color: lightgray;
+            font-size: 25px;
+            letter-spacing: 3px;
+            text-shadow:0 0 0.2em #f87,
+            -0 -0 0.2em #f87;
+        }
+        .active.page4 {
+            animation: bounceInLeft 1s  linear forwards;
+        }
+        .no-active.page4 {
+            animation: fadeOut 1s linear forwards;
+        }
+        .active.page5 {
+            animation: flip 1s  linear forwards;
+        }
+        .no-active.page5 {
+            animation: flipOutY 1s linear forwards;
+        }
+        .active.page6 {
+            animation: lightSpeedIn 1s  linear forwards;
+        }
+        .no-active.page6 {
+            animation: fadeOut 1s linear forwards;
+        }
+        .active.page7 {
+            animation: rollIn 1s  linear forwards;
+        }
+        .no-active.page7 {
+            animation: rollOut 1s linear forwards;
+        }
+        .active.page8 {
+            animation: zoomIn 1s linear forwards;
+        }
+        .no-active.page8 {
+            animation: zoomOut 1s linear forwards;
+        }
+        .page4, .page6, .page8 {
+            position: relative;
+            padding: 30px 25px 0 20px;
+            box-sizing: border-box;
+            height: 100%;
+            background: url(./image/2.jpg) center no-repeat;
+            background-size: 100% 100%;
+            _display: none;
+
+        }
+
+        .page6 {
+            background: url(./image/6.jpg) center no-repeat;
+            background-size: 100% 100%;
+        }
+        .page8{
+            background: url(./image/7.jpeg) center no-repeat;
+            background-size: 100% 100%;
+        }
+        .page5 {
+            position: relative;
+            height: 100%;
+            background: url(./image/5.jpg) center no-repeat;
+            background-size: 100% 100%;
+            _display: none;
+        }
+
+        .page7 {
+            position: relative;
+            height: 100%;
+            background: url(./image/8.jpg) center no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .page7 img {
+            width: 200px;
+            position: absolute;
+            border-radius: 10px;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        /*span {
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            letter-spacing: 3px;
+            color: lightcoral;
+            font-size: 25px;
+            font-weight: bold;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 70%;
+            text-indent: 20px;
+        }*/
+        @media screen and (max-width: 450px) {
+            .page1 {
+                background: url(./image/1-mm.jpg) no-repeat;
+                background-size: 100% 100%;
+            }
+            .page2 {
+                background: url(./image/2-m.jpg) no-repeat;
+                background-size: 100% 100%;
+            }
+            .page3 {
+                background: url(./image/3-m.jpg) no-repeat;
+                background-size: 100% 100%;
+            }
+            .page4 {
+                background: url(./image/4-m.jpg) no-repeat;
+                background-size: 100% 100%;
+            }
+            .page5 {
+                background: url(./image/5-m.jpg) no-repeat;
+                background-size: 100% 100%;
+            }
+            .page6 {
+                background: url(./image/6-m.jpg) no-repeat;
+                background-size: 100% 100%;
+            }
+            .page7 {
+                background: url(./image/7-m.jpg) no-repeat;
+                background-size: 100% 100%;
+            }
+            .page8 {
+                background: url(./image/8-m.jpg) no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<audio src="./新乐尘符%20-%20123我爱你.mp3" preload="auto" autoplay loop></audio>
+<div class="wrap" style="height: 100%; position: relative">
+    <div class="page1 active" >
+
+    </div>
+
+    <div class="page3">
+        <img src="./image/3-孟庆慧.jpg" alt="">
+    </div>
+    <div class="page4">
+        <img src="./image/3-孟庆慧.jpg" alt="">
+        <span data-str="留不住的是时间,带不走的是思念。忘不了 的是情谊,斩不断的是祝福。每年都有一 个特别的日子,每年都有我最真诚的祝 福:生日快乐,我的朋友。你最可爱,我 说时来不及思索,但思索之后,还是这样 说。">留不住的是时间,带不走的是思念。忘不了 的是情谊,斩不断的是祝福。每年都有一 个特别的日子,每年都有我最真诚的祝 福:生日快乐,我的朋友。你最可爱,我 说时来不及思索,但思索之后,还是这样 说。</span>
+    </div>
+
+    <div class="page5">
+        <img src="./image/刘吉5-霏.jpg" alt="">
+    </div>
+
+    <div class="page6">
+        <img src="./image/刘吉5-霏.jpg" alt="">
+        <span data-str="太阳是金色的，月亮是银色的，你的生日是彩色的，愿你被幸福环绕，被好运追逐，被快乐降伏，被笑容粘住。愿你走出半生，归来依是少年。"></span>
+    </div>
+
+    <div class="page7">
+        <img src="./image/7-肖天星.png" alt="">
+    </div>
+    <div class="page8">
+        <img src="./image/7-肖天星.png" alt="">
+        <span data-str="恭祝你福如东海老乌龟/寿比南山大石头!祝你生辰快乐!年年有今日!岁岁有今朝!生日快乐!哈哈!
+"></span>
+    </div>
+</div>
+
+</body>
+
+<script>
+    var divs = document.querySelector('.wrap').querySelectorAll('div');
+    divs = Array.prototype.slice.call(divs);
+    var i = 0;
+    var timer = setInterval(move, 2500);
+
+
+    function move() {
+        i++;
+        if (i === divs.length) {
+            i = 0;
+        }
+        divs.forEach(function (item, index) {
+            if (index === i) {
+                item.className = item.className.substring(0, 5) + ' active';
+                var span = item.querySelector('span');
+                if (span) {
+                    span.innerHTML = '';
+                    var d = 0;
+                    var str = span.dataset.str;
+                    clearInterval(timer);
+                    setTimeout(function () {
+                        timer = setInterval(move, 2500);
+                    }, str.length * 25);
+                    var timer1 = setInterval(function () {
+                        span.innerHTML += str[d];
+                        d++;
+                        if (d === str.length) {
+                            clearInterval(timer1);
+                        }
+                    },25)
+                }
+            } else {
+                divs[i === 0 ? divs.length-1 : i-1].className = divs[i === 0 ? divs.length-1 : i-1].className.substring(0, 5) + ' no-active';
+            }
+        })
+    }
+   /*setTimeout(function () {
+       document.querySelector('.page1').className = 'page1';
+       document.querySelector('.page2').className = 'page2 active';
+   }, 2000)*/
+</script>
+</html>
